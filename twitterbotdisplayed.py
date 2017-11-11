@@ -4,6 +4,15 @@ import random
 from random import randint
 from random import choice
 from time import sleep
+from papirus import Papirus
+from papirus import PapirusText
+from papirus import PapirusTextPos
+
+#configure papirus screen
+text = PapirusTextPos(rotation = 0)
+
+
+text.AddText("hello world", 0, 25, Id="Start" )
 
 #Authorise
 APP_KEY = 'hwtNGXTnCAjeUOgRveksZdESX'
@@ -23,9 +32,7 @@ blacklist = " -".join(naughty_words)
 keywords = filter + blacklist
 
 #sets total tweets number to automate
-TWEETNUM = 50
-
-
+TWEETNUM = 2
 
 #creates empty list for twitter IDs
 list = []
@@ -48,6 +55,7 @@ print 'now my code continues'
 countdown = TWEETNUM
 while (countdown <> 0):
 	print 'The count is:', countdown
+	text.AddText("the count is", 0, 25, Id="Start" )
 	try:
 		toTweet = list[random.randint(0,len(list))-1]
 		list.remove(toTweet)
@@ -55,7 +63,7 @@ while (countdown <> 0):
 		print toTweet
 		twitter.retweet(id = toTweet)
 		countdown = countdown -1
-		sleep(randint(300,3600))
+		sleep(randint(3,6)
 	except TwythonError as e:
 		print e
 		

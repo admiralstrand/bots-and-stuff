@@ -4,6 +4,13 @@ import random
 from random import randint
 from random import choice
 from time import sleep
+from papirus import Papirus
+from papirus import PapirusText
+from papirus import PapirusTextPos
+
+#configure papirus
+text = PapirusTextPos(rotation = 0)
+screen = Papirus(rotation = 0)
 
 #Authorise
 APP_KEY = 'hwtNGXTnCAjeUOgRveksZdESX'
@@ -17,7 +24,7 @@ twitter = Twython(APP_KEY, APP_SECRET, OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
 
 #keywords for search query q
 naughty_words = [" -RT", "MAGA", "Brexit", "Trump", "xxx", "porn", "gay", "tory", "labour", "conservative", "brexit", "russia"]
-good_words = ["mountaineering", "solarpv", "biomass", "windpower", "climatechange" "#antarctica", "#fission", "#tate"]
+good_words = [ "rainforest", "virtual reality", "arduino", "ceramics", "raspberrypi"]
 filter = " OR ".join(good_words)
 blacklist = " -".join(naughty_words)
 keywords = filter + blacklist
@@ -40,6 +47,7 @@ for tweet in search_results["statuses"]:
 		print e
 
 print 'now my code continues'
+text.AddText("now my code continues", 0, 0, Id="Start" )
 
 #this section tweets by randomly selecting id strings from the list, cleaning them update
 #(for somwe reason they are added to the list with some extra character) and retweets them
@@ -53,11 +61,14 @@ while (countdown <> 0):
 		list.remove(toTweet)
 		toTweet[2:19]
 		print toTweet
+		text.AddText("count", 0, 40, Id="Second" )
+		text.UpdateText("Second","tweeting %s of %d" % (countdown, TWEETNUM))
 		twitter.retweet(id = toTweet)
 		countdown = countdown -1
-		sleep(randint(300,3600))
+		sleep(randint(300,600))
 	except TwythonError as e:
 		print e
-		
+
+text.Clear()
 print "all done"
-	
+text.AddText("finished", 10, 35, Id="third" )
