@@ -24,7 +24,7 @@ twitter = Twython(APP_KEY, APP_SECRET, OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
 
 #keywords for search query q
 naughty_words = [" -RT", "MAGA", "Brexit", "Trump", "xxx", "porn", "gay", "tory", "labour", "conservative", "brexit", "russia"]
-good_words = [ "rainforest", "virtual reality", "arduino", "ceramics", "raspberrypi"]
+good_words = [ "solarpv", "arduino", "ceramics", "raspberrypi"]
 filter = " OR ".join(good_words)
 blacklist = " -".join(naughty_words)
 keywords = filter + blacklist

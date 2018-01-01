@@ -18,8 +18,8 @@ twitter = Twython(APP_KEY, APP_SECRET, OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
 #The above should just be a single line, without the break
 
 #keywords for search query q
-naughty_words = [" -RT", "MAGA", "Brexit", "Trump", "xxx", "porn", "gay", "tory", "labour", "conservative", "brexit", "russia"]
-good_words = [ "rainforest", "virtual reality", "arduino", "ceramics", "raspberrypi"]
+naughty_words = [" -RT", "pornstar", "nsfw", "NSFW", "adult", "models", "cam", "MAGA", "Brexit", "Trump", "xxx", "porn", "gay", "tory", "labour", "conservative", "brexit", "russia"]
+good_words = [ "solarpv", "arduino", "ceramics", "raspberrypi"]
 filter = " OR ".join(good_words)
 blacklist = " -".join(naughty_words)
 keywords = filter + blacklist
