@@ -14,7 +14,7 @@ twitter = Twython(APP_KEY, APP_SECRET, OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
 
 #simple retween keywords
 naughty_words = [" -RT", "MAGA", "Brexit", "Trump", "xxx", "porn", "gay"]
-good_words = ["energy", "climatechange", "bitcoin", "dog", "carbon"]
+good_words = ["#ceramics", "#climatechange", "#bitcoin"]
 filter = " OR ".join(good_words)
 blacklist = " -".join(naughty_words)
 keywords = filter + blacklist
