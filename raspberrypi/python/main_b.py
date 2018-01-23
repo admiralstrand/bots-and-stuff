@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 """Stochastically calculate pi and display it on an epaper screen, on a pot.
 
 @filename   :   main.cpp
