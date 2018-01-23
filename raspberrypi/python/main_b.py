@@ -32,6 +32,7 @@ import Image
 # import ImageDraw
 # import ImageFont
 import math
+import time
 import random
 from PIL import Image as PILimage
 import matplotlib.pyplot as plt
@@ -124,6 +125,8 @@ def main():
 
             # You can get frame buffer from an image or import the buffer directly:
             # epd.display_frame(imagedata.MONOCOLOR_BITMAP)
+
+            time.sleep(0.5)
 
 
 if __name__ == '__main__':
