@@ -94,9 +94,9 @@ def main():
 
             plt.text(range_max*1.13,
                      range_max*0.5,
-                     ("π≅{pi_approx:.4f}\n"
-                      "πΔ={delta:.4f}\n"
-                      "N={N}").format(pi_approx=pi_approx,
+                     ("spi={pi_approx:.4f}\n"                  # π≅
+                      "del={delta:.4f}\n"                      # πΔ=
+                      "  N={N}").format(pi_approx=pi_approx,   # N=
                                       delta=math.pi - pi_approx,
                                       N=num_tests),
                      style='italic',
