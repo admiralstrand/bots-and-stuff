@@ -83,8 +83,13 @@ def main():
         # num_out   = num_tests-num_in
         pi_approx = (4*num_in)/num_tests
 
-    #     if i>2:  # toggle these lines
-        if i > cap-3:  # don't plot empty plots, it goes crazy
+        if i>2:  # toggle these lines
+        # if i > cap-3:  # don't plot empty plots, it goes crazy
+            value_output = ("spi={pi_approx:.4f}\n"                  # π≅
+                            "del={delta:.4f}\n"                      # πΔ=
+                            "  N={N}").format(pi_approx=pi_approx,   # N=
+                                              delta=math.pi - pi_approx,
+                                              N=num_tests)
             fig = plt.scatter(x_coords, y_coords, c=colours, alpha=0.5)
             plt.axis('equal')
             plt.axis('off')
@@ -94,14 +99,11 @@ def main():
 
             plt.text(range_max*1.13,
                      range_max*0.5,
-                     ("spi={pi_approx:.4f}\n"                  # π≅
-                      "del={delta:.4f}\n"                      # πΔ=
-                      "  N={N}").format(pi_approx=pi_approx,   # N=
-                                      delta=math.pi - pi_approx,
-                                      N=num_tests),
+                     value_output,
                      style='italic',
                      bbox={'facecolor': 'red', 'alpha': 0.2, 'pad': 6},
                      size=12)
+            print(value_output)
             if debug:
                 plt.show()  # you can show or save, not both
             else:
