@@ -66,7 +66,7 @@ def main():
     y_coords = []
     colours  = []
     range_max = 1000000  # bigger numbers here give better accuaracy
-    cap = 1000  # bigger numbers here give better accuaracy, but take longer
+    cap = 7200  # bigger numbers here give better accuaracy, but take longer
 
     for i in range(cap):
         x = random.randint(0, range_max)
