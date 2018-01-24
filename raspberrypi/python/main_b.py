@@ -86,11 +86,11 @@ def main():
             pi_approx = (4*num_in)/num_tests
 
             if i > 2:
-                value_output = ("π≅{pi_approx:.4f}\n"                  # π≅
-                                "πΔ={delta:.4f}\n"                     # πΔ=
-                                " N={N}").format(pi_approx=pi_approx,   # N=
-                                                 delta=math.pi - pi_approx,
-                                                 N=num_tests)
+                value_output = ("π  ≅{pi_approx:.4f}\n"                 # π≅
+                                "πΔ ={delta:.4f}\n"                     # πΔ=
+                                "N  ={N}").format(pi_approx=pi_approx,  # N=
+                                                  delta=math.pi - pi_approx,
+                                                  N=num_tests)
                 fig = plt.scatter(x_coords,
                                   y_coords,
                                   c=colours,
@@ -118,15 +118,15 @@ def main():
                     #  convert a .png image file to a .bmp image file using PIL
                     file_in = filename + ".png"
                     img = PILimage.open(file_in)
-                    img.rotate(180)
-                    img.save(filename + ".bmp")
+                    img2 = img.rotate(180)
+                    img2.save(filename + ".bmp")
 
                 plt.clf()
 
                 image = Image.open('p.bmp')
                 epd.display_frame(epd.get_frame_buffer(image))
 
-                time.sleep(0.5)
+                time.sleep(0.1)
 
 
 if __name__ == '__main__':
