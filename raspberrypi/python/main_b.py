@@ -118,6 +118,7 @@ def main():
                 file_in = filename + ".png"
                 img = PILimage.open(file_in)
                 file_out = filename + ".bmp"
+                img.rotate(180)
                 img.save(file_out)
 
             plt.clf()
