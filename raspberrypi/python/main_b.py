@@ -57,6 +57,7 @@ def in_circle(range_max, pt=(50, 50)):
 
 
 def main():
+    """Run the pi finder."""
     epd = epd4in2.EPD()
     epd.init()
 
@@ -68,72 +69,64 @@ def main():
     range_max = 1000000  # bigger numbers here give better accuaracy
     cap = 7200  # bigger numbers here give better accuaracy, but take longer
 
-    for i in range(cap):
-        x = random.randint(0, range_max)
-        y = random.randint(0, range_max)
-        x_coords.append(x)
-        y_coords.append(y)
-        if in_circle(range_max, pt=(x, y)):
-            colours.append(1)
-        else:
-            colours.append(0)
-
-        num_tests = len(colours)
-        num_in    = sum(colours)
-        # num_out   = num_tests-num_in
-        pi_approx = (4*num_in)/num_tests
-
-        if i > 2:  # toggle these lines
-        # if i > cap-3:  # don't plot empty plots, it goes crazy
-            value_output = ("π≅{pi_approx:.4f}\n"                  # π≅
-                            "πΔ={delta:.4f}\n"                     # πΔ=
-                            "N={N}").format(pi_approx=pi_approx,   # N=
-                                            delta=math.pi - pi_approx,
-                                            N=num_tests)
-            fig = plt.scatter(x_coords,
-                              y_coords,
-                              c=colours,
-                              alpha=0.5,
-                              marker=",")
-            plt.axis('equal')
-            plt.axis('off')
-            fig.axes.get_xaxis().set_ticks([])
-            fig.axes.get_yaxis().set_ticks([])
-            plt.subplots_adjust(left=-0.25)
-
-            plt.text(range_max*1.13,
-                     range_max*0.5,
-                     value_output,
-                     style='italic',
-                     bbox={'facecolor': 'red', 'alpha': 0.2, 'pad': 6},
-                     size=12)
-            print(value_output)
-            if debug:
-                plt.show()  # you can show or save, not both
+    while True:
+        for i in range(cap):
+            x = random.randint(0, range_max)
+            y = random.randint(0, range_max)
+            x_coords.append(x)
+            y_coords.append(y)
+            if in_circle(range_max, pt=(x, y)):
+                colours.append(1)
             else:
-                filename = "p"  # +str(i)
-                plt.savefig(filename + ".png", dpi=100)
+                colours.append(0)
 
-                #  convert a .png image file to a .bmp image file using PIL
-                file_in = filename + ".png"
-                img = PILimage.open(file_in)
-                file_out = filename + ".bmp"
-                img.rotate(180)
-                img.save(file_out)
+            num_tests = len(colours)
+            num_in    = sum(colours)
+            # num_out   = num_tests-num_in
+            pi_approx = (4*num_in)/num_tests
 
-            plt.clf()
+            if i > 2:
+                value_output = ("π≅{pi_approx:.4f}\n"                  # π≅
+                                "πΔ={delta:.4f}\n"                     # πΔ=
+                                " N={N}").format(pi_approx=pi_approx,   # N=
+                                                 delta=math.pi - pi_approx,
+                                                 N=num_tests)
+                fig = plt.scatter(x_coords,
+                                  y_coords,
+                                  c=colours,
+                                  alpha=0.5,
+                                  marker=",")
+                plt.axis('equal')
+                plt.axis('off')
+                fig.axes.get_xaxis().set_ticks([])
+                fig.axes.get_yaxis().set_ticks([])
+                plt.subplots_adjust(left=-0.25)
 
-            # For simplicity, the arguments are explicit numerical coordinates
-            # image = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)    # 1: clear the frame
-            # epd.display_frame(epd.get_frame_buffer(image))
+                plt.text(range_max*1.13,
+                         range_max*0.5,
+                         value_output,
+                         style='italic',
+                         bbox={'facecolor': 'red', 'alpha': 0.2, 'pad': 6},
+                         size=12)
+                print(value_output)
+                if debug:
+                    plt.show()  # you can show or save, not both
+                else:
+                    filename = "p"  # +str(i)
+                    plt.savefig(filename + ".png", dpi=100)
 
-            image = Image.open('p.bmp')
-            epd.display_frame(epd.get_frame_buffer(image))
+                    #  convert a .png image file to a .bmp image file using PIL
+                    file_in = filename + ".png"
+                    img = PILimage.open(file_in)
+                    img.rotate(180)
+                    img.save(filename + ".bmp")
 
-            # You can get frame buffer from an image or import the buffer directly:
-            # epd.display_frame(imagedata.MONOCOLOR_BITMAP)
+                plt.clf()
 
-            time.sleep(0.5)
+                image = Image.open('p.bmp')
+                epd.display_frame(epd.get_frame_buffer(image))
+
+                time.sleep(0.5)
 
 
 if __name__ == '__main__':
