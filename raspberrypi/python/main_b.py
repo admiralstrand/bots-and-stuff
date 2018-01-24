@@ -94,7 +94,7 @@ def main():
                               y_coords,
                               c=colours,
                               alpha=0.5,
-                              marker=".")
+                              marker=",")
             plt.axis('equal')
             plt.axis('off')
             fig.axes.get_xaxis().set_ticks([])
