@@ -110,13 +110,13 @@ def main():
                          size=12)
 
                 circle = plt.Circle((range_max*0.5, range_max*0.5),
-                                range_max*0.5,
-                                color='r',
-                                fill=False,
-                                alpha=0.1,
-                                linewidth=1,
-                                linestyle=":",
-                                edgecolor='b')
+                                    range_max*0.5,
+                                    color='r',
+                                    fill=False,
+                                    alpha=0.1,
+                                    linewidth=3,
+                                    linestyle=":",
+                                    edgecolor='b')
                 plt.gcf().gca().add_artist(circle)
                 print(value_output)
                 if debug:
