@@ -83,7 +83,7 @@ def main():
         # num_out   = num_tests-num_in
         pi_approx = (4*num_in)/num_tests
 
-        if i>2:  # toggle these lines
+        if i > 2:  # toggle these lines
         # if i > cap-3:  # don't plot empty plots, it goes crazy
             value_output = ("π≅{pi_approx:.4f}\n"                  # π≅
                             "πΔ={delta:.4f}\n"                     # πΔ=
