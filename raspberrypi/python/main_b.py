@@ -64,7 +64,6 @@ def main():
     x_coords = []
     y_coords = []
     colours  = []
-    # markers  = []
     range_max = 1000000  # bigger numbers here give better accuaracy
     cap = 1000  # bigger numbers here give better accuaracy, but take longer
 
@@ -91,6 +90,11 @@ def main():
                                               delta=math.pi - pi_approx,
                                               N=num_tests)
             fig = plt.scatter(x_coords, y_coords, c=colours, alpha=0.5)
+            fig = plt.scatter(x_coords,
+                              y_coords,
+                              c=colours,
+                              alpha=0.5,
+                              marker=".")
             plt.axis('equal')
             plt.axis('off')
             fig.axes.get_xaxis().set_ticks([])
