@@ -27,6 +27,7 @@ THE SOFTWARE.
 """
 
 from __future__ import division
+from __future__ import unicode_literals
 import epd4in2
 import Image
 # import ImageDraw
@@ -84,12 +85,11 @@ def main():
 
         if i>2:  # toggle these lines
         # if i > cap-3:  # don't plot empty plots, it goes crazy
-            value_output = ("spi={pi_approx:.4f}\n"                  # π≅
-                            "del={delta:.4f}\n"                      # πΔ=
-                            "  N={N}").format(pi_approx=pi_approx,   # N=
-                                              delta=math.pi - pi_approx,
-                                              N=num_tests)
-            fig = plt.scatter(x_coords, y_coords, c=colours, alpha=0.5)
+            value_output = ("π≅{pi_approx:.4f}\n"                  # π≅
+                            "πΔ={delta:.4f}\n"                     # πΔ=
+                            "N={N}").format(pi_approx=pi_approx,   # N=
+                                            delta=math.pi - pi_approx,
+                                            N=num_tests)
             fig = plt.scatter(x_coords,
                               y_coords,
                               c=colours,
