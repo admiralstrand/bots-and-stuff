@@ -113,8 +113,8 @@ def main():
                                     range_max*0.5,
                                     color='r',
                                     fill=False,
-                                    alpha=0.1,
-                                    linewidth=3,
+                                    alpha=0.5,
+                                    linewidth=2,
                                     linestyle=":",
                                     edgecolor='b')
                 plt.gcf().gca().add_artist(circle)
