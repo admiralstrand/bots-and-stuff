@@ -55,6 +55,12 @@ def in_circle(range_max, pt=(50, 50)):
     dist = math.hypot(pt[0] - r, pt[1] - r)
     return dist < r
 
+def sub_colour(c):
+    if c == 0:
+        return "k"
+    else:
+        return "r"
+
 
 def main():
     """Run the pi finder."""
@@ -93,7 +99,7 @@ def main():
                                                   N=num_tests)
                 fig = plt.scatter(x_coords,
                                   y_coords,
-                                  c=colours,
+                                  c=[sub_colour(c) for c in colours],
                                   alpha=0.5,
                                   marker="2")
                 plt.axis('equal')
