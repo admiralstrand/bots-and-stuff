@@ -69,10 +69,10 @@ def main():
 
     #  Here's the real shit
     debug = False
-    x_coords = []
-    y_coords = []
-    colours  = []
     range_max = 1000000  # bigger numbers here give better accuaracy
+    x_coords = [0, range_max, range_max,         0]
+    y_coords = [0,         0, range_max, range_max]
+    colours  = [0,         0,         0,         0]
     cap = 7200  # bigger numbers here give better accuaracy, but take longer
 
     while True:
